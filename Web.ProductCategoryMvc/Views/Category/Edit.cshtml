@@ -1,0 +1,43 @@
+﻿@model  Web.ProductCategoryMvc.Models.tblCategory
+
+@{
+
+    ViewBag.Title = "Düzenle";
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+
+
+@using (Html.BeginForm("Edit", "Category", FormMethod.Post))
+{
+<form method="post" class="form-horizontal">
+
+
+    <div class="col-md-8" style="margin:auto;margin-top:50px">
+        <div class="card card-info">
+            <div class="card-header">
+                <h3 class="card-title">Kategori Ekle/Güncelle</h3>
+            </div>
+         
+            <div class="card-body">
+                <div class="form-group row">
+                    <label for="categoryName" class="col-sm-2 col-form-label">Kategori Adı</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control", @required = "required", @placeholder = "Kategori Adı Giriniz" })
+                    </div>
+                </div>
+            </div>        
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </div>
+          
+
+        </div>
+    </div>
+
+</form>
+
+
+}
+
+
+
