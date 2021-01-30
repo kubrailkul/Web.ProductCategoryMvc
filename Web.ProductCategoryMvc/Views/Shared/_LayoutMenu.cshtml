@@ -27,6 +27,8 @@
     <!-- summernote -->
     <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css">
     <link href="~/plugins/toastr/toastr.css" rel="stylesheet" />
+
+    <link href="~/plugins/alertify/css/alertify.min.css" rel="stylesheet" />
     
 </head>
 <body>
@@ -186,19 +188,20 @@
     <script src="~/dist/js/pages/dashboard.js"></script>
     <script src="~/plugins/toastr/toastr.min.js"></script>
     <script src="~/plugins/sweetalert2/sweetalert2.all.min.js"></script>
-
+    <script src="~/plugins/alertify/alertify.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
             $('#btn_sil_urun').click(function () {
                 alert('Ürün başarıyla silindi.')
             });
-        });
+        });     
     </script>
 
     <script type="text/javascript">
         $(document).on("click", ".btn.btn-danger", function () {
             var confirmDelete = confirm("Silme işlemini onaylıyor musunuz?");
+
             if (confirmDelete) {
                 var id = $(this).attr("data-id");
                 var delete_tr = $(this).closest("tr");
@@ -208,17 +211,7 @@
 
                     success: function (result) {
 
-                        switch (result) {
-                            case "1":
-                                delete_tr.fadeOut(400, function () {
-                                    delete_tr.remove();
-                                  
-                                });
-                                  Swal.fire({
-                                        icon: 'success',
-                                        text: 'Kategori başarıyla silindi'
-                                    })
-                                break;
+                        switch (result) {                         
                             case "-1":
                                 Swal.fire({
                                     icon: 'error',
@@ -233,8 +226,30 @@
                                     text: 'Hata Oluştu!'
 
                                 })
-                                break;
 
+                            default:
+                                delete_tr.fadeOut(400, function () {
+                                    delete_tr.remove();
+                                  
+                                    if (result==0) {
+                                       
+                                        $("#div_category").hide();
+                                      
+                                        Swal.fire({
+                                            icon: 'warning',
+                                            text: 'Kayıt bulunamamıştır. Lütfen kayıt ekleyin!'
+                                        })
+                                    }
+                                    else {
+                                        $("#lbl_KategoriAdet").html(result + ' adet kayıt listelenmektedir.');
+                                    }
+                                });
+
+                                Swal.fire({
+                                    icon: 'success',
+                                    text: 'Kategori başarıyla silindi'
+                                })
+                                break;
                         }
 
                     }
@@ -242,6 +257,15 @@
                 });
 
             }
+
+       
+
+
+
+
+
+
+
         });
 
 

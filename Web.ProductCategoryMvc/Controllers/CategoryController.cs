@@ -59,40 +59,43 @@ namespace Web.ProductCategoryMvc.Controllers
                 data.CategoryName = model.CategoryName;
             }
 
-            db.SaveChanges();        
-            //return Json(data:new {message="veri eklendi"}, JsonRequestBehavior.AllowGet);
+            db.SaveChanges();                   
             return RedirectToAction("List", "Category");
         }
-  
+
 
         [HttpPost]
-        public string Delete(int? id)
+        public JsonResult Delete(int? id)
         {
             var data = db.tblCategories.FirstOrDefault(x => x.Id == id);
             var foreignkeyexception_kontrol = db.tblProducts.FirstOrDefault(x => x.CategoryId == id);
             try
             {
-                if (data != null && foreignkeyexception_kontrol == null)
+
+                if (foreignkeyexception_kontrol == null)
                 {
                     db.tblCategories.Remove(data);
                     db.SaveChanges();
-                    return "1";
+                    string sayi = db.tblCategories.ToList().Count.ToString();
+                    return Json(sayi, JsonRequestBehavior.AllowGet);
+
                 }
                 else
                 {
-                    return "-1";
+                    return Json("-1", JsonRequestBehavior.AllowGet);
                 }
-              
+
 
             }
             catch (Exception ex)
             {
-                    string message = ex.Message;
-                    return "-2";
-     
+                string message = ex.Message;
+                return Json("-2", JsonRequestBehavior.AllowGet);
+
             }
 
         }
+
 
     }
 }

@@ -167,6 +167,23 @@
       <DependentUpon>Models.edmx</DependentUpon>
       <LastGenOutput>Models.cs</LastGenOutput>
     </Content>
+    <Content Include="plugins\alertify\alertify.min.js" />
+    <Content Include="plugins\alertify\css\alertify.css" />
+    <Content Include="plugins\alertify\css\alertify.min.css" />
+    <Content Include="plugins\alertify\css\alertify.rtl.css" />
+    <Content Include="plugins\alertify\css\alertify.rtl.min.css" />
+    <Content Include="plugins\alertify\css\themes\bootstrap.css" />
+    <Content Include="plugins\alertify\css\themes\bootstrap.min.css" />
+    <Content Include="plugins\alertify\css\themes\bootstrap.rtl.css" />
+    <Content Include="plugins\alertify\css\themes\bootstrap.rtl.min.css" />
+    <Content Include="plugins\alertify\css\themes\default.css" />
+    <Content Include="plugins\alertify\css\themes\default.min.css" />
+    <Content Include="plugins\alertify\css\themes\default.rtl.css" />
+    <Content Include="plugins\alertify\css\themes\default.rtl.min.css" />
+    <Content Include="plugins\alertify\css\themes\semantic.css" />
+    <Content Include="plugins\alertify\css\themes\semantic.min.css" />
+    <Content Include="plugins\alertify\css\themes\semantic.rtl.css" />
+    <Content Include="plugins\alertify\css\themes\semantic.rtl.min.css" />
     <Content Include="plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
     <Content Include="plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css" />
     <Content Include="plugins\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />

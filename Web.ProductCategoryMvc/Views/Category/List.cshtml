@@ -8,37 +8,51 @@
 
 
 <div class="container col-md-11">
-    <h3>Kategori Listesi</h3>
-    <div class="card card-info">
-        <div class="card-header">
-            <h3 class="card-title">@kategori_adet adet kayıt listelenmektedir.</h3>
-        </div>
-        <div class="card-body">
-            <div style="overflow-x:auto;">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Kategori Adı</th>
-                            <th scope="col">İşlemler</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.Categories)
-                        {
-                            <tr>
-                                <td>@item.CategoryName</td>
-                                <td>
-                                    <a class="btn btn-primary" href="/Category/Edit/@item.Id"><i class="fa fa-pen"> Güncelle</i></a>   <a class="btn btn-danger" data-id="@item.Id" id="btnsil"><i class="fa fa-trash"> Sil</i></a>
+    @if (kategori_adet > 0)
+    {
+        <div id="div_category">
+            <h3>Kategori Listesi</h3>
+            <div class="card card-info">
+                <div class="card-header">
+                    <h3 class="card-title"><label id="lbl_KategoriAdet">@kategori_adet adet kayıt listelenmektedir.</label></h3>
 
-                                </td>
+                </div>
+                <div class="card-body">
+                    <div style="overflow-x:auto;">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Kategori Adı</th>
+                                    <th scope="col">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Categories)
+                                {
+                                    <tr>
+                                        <td>@item.CategoryName</td>
+                                        <td>
+                                            <a class="btn btn-primary" href="/Category/Edit/@item.Id"><i class="fa fa-pen"> Güncelle</i></a>   <a class="btn btn-danger" data-id="@item.Id" id="btnsil"><i class="fa fa-trash"> Sil</i></a>
 
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div id="div_notexistcategory">
+            <div class="card" style="background-color:sandybrown;text-align:center;margin-top:25px;">
+                <h1 style="color:red">Kategori kaydı bulunamamıştır. Lütfen kategori ekleyiniz!</h1>
+            </div>
+        </div>
+    }
 </div>
 
 

@@ -8,88 +8,65 @@
 }
 
 
-
-<script type="text/javascript">
-
-    $(function () {
-        $("#btn").click(function () {
-            alert("oke")
-        });
-    });
-
-</script>
-
-
-
 <div class="container col-md-11">
-    <h3>Ürün Listesi</h3>
-    <div class="card card-info">
-        <div class="card-header">
-            <h3 class="card-title">@urun_adet adet kayıt listelenmektedir.</h3>
-        </div>
-        <div class="card-body">
+    @if (urun_adet > 0)
+    {
+        <h3>Ürün Listesi</h3>
+        <div class="card card-info">
+            <div class="card-header">
+                <h3 class="card-title">@urun_adet adet kayıt listelenmektedir.</h3>
+            </div>
+            <div class="card-body">
 
 
-            <div style="overflow-x:auto;">
+                <div style="overflow-x:auto;">
 
 
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Ürün Adı</th>
-                            <th scope="col">Ürün Kategorisi</th>
-                            <th scope="col">İşlemler</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        @foreach (var item in Model.Products)
-                        {
-                            var data = Model.Categories.FirstOrDefault(x => x.Id == item.CategoryId);
-                            var kategori = data.CategoryName;
-
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <td>@item.ProductName</td>
-
-                                <td> @kategori</td>
-
-                                <td>
-                                    <a class="btn btn-outline-primary" href="/Product/Edit/@item.Id">Güncelle</a>
-                                    <a class="btn btn-outline-danger" href="/Product/Delete/@item.Id" id="btn_sil_urun"><i class="fa fa-trash">Sil</i></a>
-                                </td>
-
+                                <th scope="col">Ürün Adı</th>
+                                <th scope="col">Ürün Kategorisi</th>
+                                <th scope="col">İşlemler</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model.Products)
+                            {
+                                var data = Model.Categories.FirstOrDefault(x => x.Id == item.CategoryId);
+                                var kategori = data.CategoryName;
+
+                                <tr>
+                                    <td>@item.ProductName</td>
+
+                                    <td> @kategori</td>
+
+                                    <td>
+                                        <a class="btn btn-outline-primary" href="/Product/Edit/@item.Id">Güncelle</a>
+                                        <a class="btn btn-outline-danger" href="/Product/Delete/@item.Id" id="btn_sil_urun"><i class="fa fa-trash">Sil</i></a>
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+
+
 
 
             </div>
-
-
-
-
-
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="card" style="background-color:sandybrown;text-align:center;margin-top:25px;">
+            <h1 style="color:red">Ürün kaydı bulunamamıştır. Lütfen ürün ekleyiniz!</h1>
+        </div>
+    }
 </div>
 
-<div class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>

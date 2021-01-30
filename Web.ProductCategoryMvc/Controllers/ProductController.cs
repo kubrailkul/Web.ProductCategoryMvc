@@ -45,17 +45,7 @@ namespace Web.ProductCategoryMvc.Controllers
             }
 
             ViewBag.Categories = Categories;
-
-            //var categoryList = db.tblCategories.ToList();
-            //if (categoryList.Count>0)
-            //{
-            //    ViewBag.Categories = new SelectList(db.tblCategories.ToList(), "Id", "CategoryName");
-
-            //}
-            //else
-            //{
-            //    ViewBag.Categories = null;
-            //}
+       
 
             if (id == null)
             {
